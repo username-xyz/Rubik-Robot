@@ -33,7 +33,7 @@ pwm_max = 512
 # Input:
 #   fh      file handle to the open tune values file
 #
-def read_tune_val(self, fh):
+def read_tune_val(fh):
     tune_line  = fh.readline()
     tune_spilt = tune_line.split(" ")
     val = int(tune_spilt[0])
@@ -84,10 +84,10 @@ try:
     pwm_freq = read_tune_val(f)
     pwm_min = read_tune_val(f)
     pwm_max = read_tune_val(f)
-    rt_pwm = read_tune_val(f)
     rg_pwm = read_tune_val(f)
-    lt_pwm = read_tune_val(f)
+    rt_pwm = read_tune_val(f)
     lg_pwm = read_tune_val(f)
+    lt_pwm = read_tune_val(f)
     rt_cal_m90 = read_tune_val(f)
     rt_cal_0   = read_tune_val(f)
     rt_cal_90  = read_tune_val(f)
