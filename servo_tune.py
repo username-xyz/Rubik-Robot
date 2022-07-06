@@ -37,10 +37,6 @@ def read_tune_val(fh):
     tune_line  = fh.readline()
     tune_spilt = tune_line.split(" ")
     val = int(tune_spilt[0])
-    if (val < self.pwm_min):
-        val = self.pwm_min
-    if (val > self.pwm_max):
-        val = self.pwm_max
     return val
 
 
@@ -52,6 +48,8 @@ def read_tune_val(fh):
 #
 def tune_servo(pwm_port, pwm_value):
     global pwm_min, pwm_max
+
+    pca.channels[pwm_port].duty_cycle = pwm_value << 4
 
     done = 0
     while (done == 0):
@@ -80,7 +78,7 @@ def tune_servo(pwm_port, pwm_value):
 #
 try:
     # Read the saved calibration values
-    f = open(self.cal_file, 'r')
+    f = open(cal_file, 'r')
     pwm_freq = read_tune_val(f)
     pwm_min = read_tune_val(f)
     pwm_max = read_tune_val(f)

@@ -175,6 +175,10 @@ Press Enter to clear the error.
 When the cube is solved the display will show **Done**. Press Enter to clear
 the message and return to the Main Menu.
 
+When the grippers are being used to solve the cube any of the three buttons
+can be used to abort the operation. This can be needed if the cube slips in
+the grippers and the robot needs to be stopped.
+
 ####Quit
 
 Quit will exit the program.

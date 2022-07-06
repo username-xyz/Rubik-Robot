@@ -202,6 +202,11 @@ class RubikServo(object):
         if (DEBUG == 1):
             print("set_right_grip_open")
         if (self.rg_pos != G_POS_OPEN):
+            if (self.rg_pos == G_POS_CLOSED):
+                # Open just a little first to avoid messing up the cube
+                self.set_pwm_value(self.rg, \
+                             int((self.rg_cal_close + self.rg_cal_load)/2))
+                sleep(SERVO_MOVE_DELAY / 4)
             self.set_pwm_value(self.rg, self.rg_cal_open)
             self.rg_pos = G_POS_OPEN
             sleep(SERVO_MOVE_DELAY)
@@ -268,6 +273,11 @@ class RubikServo(object):
         if (DEBUG == 1):
             print("set_left_grip_open")
         if (self.lg_pos != G_POS_OPEN):
+            if (self.lg_pos == G_POS_CLOSED):
+                # Open just a little first to avoid messing up the cube
+                self.set_pwm_value(self.lg, \
+                             int((self.lg_cal_close + self.lg_cal_load)/2))
+                sleep(SERVO_MOVE_DELAY / 4)
             self.set_pwm_value(self.lg, self.lg_cal_open)
             self.lg_pos = G_POS_OPEN
             sleep(SERVO_MOVE_DELAY)

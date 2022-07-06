@@ -111,43 +111,45 @@ class RubikScan(object):
         # Give the camera time to adjust
         sleep(2)
 
-        display.write_body("Front")
-        self.camera.capture('Cube/face2.jpg')    
+        try:
+            display.write_body("Front")
+            self.camera.capture('Cube/face2.jpg')
 
-        self.servos.right_rotate_cube_90_cw()
-        self.servos.clear_camera()
+            self.servos.right_rotate_cube_90_cw()
+            self.servos.clear_camera()
 
-        display.write_body("Right")
-        self.camera.capture('Cube/face1.jpg')
+            display.write_body("Right")
+            self.camera.capture('Cube/face1.jpg')
 
-        self.servos.right_rotate_cube_90_cw()
-        self.servos.clear_camera()
+            self.servos.right_rotate_cube_90_cw()
+            self.servos.clear_camera()
 
-        display.write_body("Back")
-        self.camera.capture('Cube/face5.jpg')
+            display.write_body("Back")
+            self.camera.capture('Cube/face5.jpg')
 
-        self.servos.right_rotate_cube_90_cw()
-        self.servos.clear_camera()
+            self.servos.right_rotate_cube_90_cw()
+            self.servos.clear_camera()
 
-        display.write_body("Left")
-        self.camera.capture('Cube/face4.jpg')
+            display.write_body("Left")
+            self.camera.capture('Cube/face4.jpg')
 
-        self.servos.left_rotate_cube_90_cw()
-        self.servos.right_rotate_cube_90_cw()
-        self.servos.clear_camera()
+            self.servos.left_rotate_cube_90_cw()
+            self.servos.right_rotate_cube_90_cw()
+            self.servos.clear_camera()
 
-        display.write_body("Up")
-        self.camera.capture('Cube/face0.jpg')
+            display.write_body("Up")
+            self.camera.capture('Cube/face0.jpg')
 
-        self.servos.right_rotate_cube_180()
-        self.servos.clear_camera()
+            self.servos.right_rotate_cube_180()
+            self.servos.clear_camera()
 
-        # This face will be upside down
-        display.write_body("Down")
-        self.camera.capture('Cube/face3.jpg')
+            # This face will be upside down
+            display.write_body("Down")
+            self.camera.capture('Cube/face3.jpg')
 
-        # Release the camera
-        self.camera.close()
+        finally:
+            # Release the camera
+            self.camera.close()
 
 
     # Scan and analyse the colors on a scrambled cube
